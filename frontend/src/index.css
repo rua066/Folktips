@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "@fontsource/poppins";
+
+:root{
+    --primary:#2563EB;
+    --secondary:#3B82F6;
+    --background:#F4F7FA;
+    --card:#FFFFFF;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:var(--background);
+    font-family:"Poppins",sans-serif;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+button{
+    transition:.3s;
+}
+
+img{
+    user-select:none;
+}
