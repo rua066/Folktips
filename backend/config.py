@@ -8,11 +8,17 @@ class Config:
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 
     SQLALCHEMY_DATABASE_URI = (
-        f"mysql+pymysql://{os.getenv('MYSQL_USER')}:"
-        f"{os.getenv('MYSQL_PASSWORD')}@"
-        f"{os.getenv('MYSQL_HOST')}:"
-        f"{os.getenv('MYSQL_PORT')}/"
-        f"{os.getenv('MYSQL_DATABASE')}"
-    )
+    f"mysql+pymysql://{os.getenv('MYSQL_USER')}:"
+    f"{os.getenv('MYSQL_PASSWORD')}@"
+    f"{os.getenv('MYSQL_HOST')}:"
+    f"{os.getenv('MYSQL_PORT')}/"
+    f"{os.getenv('MYSQL_DATABASE')}"
+    "?ssl_verify_cert=false"
+)
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ENGINE_OPTIONS = {
+    "connect_args": {
+        "ssl": {}
+    }
+}
