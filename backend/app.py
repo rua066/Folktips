@@ -18,11 +18,15 @@ from routes.comment import comment_bp
 from routes.rating import rating_bp
 
 app = Flask(__name__)
+CORS(
+    app,
+    resources={r"/api/*": {"origins": "*"}},
+    supports_credentials=True
+)
 app.config.from_object(Config)
 db.init_app(app)
 bcrypt.init_app(app)
 jwt.init_app(app)
-CORS(app)
 import os
 
 UPLOAD_FOLDER = os.path.join(
@@ -36,13 +40,11 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.register_blueprint(category_bp)
 app.register_blueprint(tip_bp)
 app.register_blueprint(admin_bp)
-
-CORS(app)
-
 app.register_blueprint(health_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(favorite_bp)
 app.register_blueprint(comment_bp)
+app.register_blueprint(rating_bp)
 
 @app.route("/")
 def home():
