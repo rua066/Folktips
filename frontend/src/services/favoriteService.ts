@@ -1,12 +1,10 @@
-import axios from "axios";
-
-const API = "http://127.0.0.1:5000/favorites";
+import API from "./api";
 
 export const saveFavorite = async (
   userId: number,
   tipId: number
 ) => {
-  return axios.post(API, {
+  return API.post("/favorites", {
     user_id: userId,
     tip_id: tipId,
   });
@@ -16,7 +14,7 @@ export const removeFavorite = async (
   userId: number,
   tipId: number
 ) => {
-  return axios.delete(API, {
+  return API.delete("/favorites", {
     data: {
       user_id: userId,
       tip_id: tipId,
@@ -27,14 +25,14 @@ export const removeFavorite = async (
 export const getFavorites = async (
   userId: number
 ) => {
-  return axios.get(`${API}/${userId}`);
+  return API.get(`/favorites/${userId}`);
 };
 export const checkFavorite = (
     userId: number,
     tipId: number
 ) => {
 
-    return axios.get(`${API}/check`, {
+    return API.get("/favorites/check", {
         params: {
             user_id: userId,
             tip_id: tipId,

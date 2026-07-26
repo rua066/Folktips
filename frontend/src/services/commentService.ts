@@ -1,33 +1,18 @@
-import axios from "axios";
-
-const API = "http://127.0.0.1:5000/comments";
+import API from "./api";
 
 export const getComments = async (tipId: number) => {
-
-    const response = await axios.get(`${API}/${tipId}`);
-
+    const response = await API.get(`/comments/${tipId}`);
     return response.data;
-
 };
 
 export const addComment = async (
-
     userId: number,
-
     tipId: number,
-
     content: string
-
 ) => {
-
-    return axios.post(API, {
-
+    return API.post("/comments", {
         user_id: userId,
-
         tip_id: tipId,
-
         content,
-
     });
-
 };
