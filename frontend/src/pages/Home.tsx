@@ -26,7 +26,7 @@ function Home() {
 
       const data = await getAllTips();
 
-      setTips(data);
+      setTips(data.tips);
 
     } catch (error) {
 
